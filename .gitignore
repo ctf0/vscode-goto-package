@@ -1,3 +1,8 @@
 node_modules
 .vscode
 out
+.history
+.DS_Store
+package-lock.json
+yarn.lock
+goto-package-0.0.1.vsix

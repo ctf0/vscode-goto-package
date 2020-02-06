@@ -1,17 +1,24 @@
-import * as vscode from 'vscode';
+import * as vscode from 'vscode'
+import LinkProvider from './provider'
 
-import CodeLensProvider from './provider';
-import * as commands from './commands';
+let providers: any = []
 
-export function activate(context: vscode.ExtensionContext) {
-    context.subscriptions.push(
-        vscode.languages.registerCodeLensProvider(
-            'json',
-            new CodeLensProvider()
-        )
-    );
+export function activate() {
+    clearAll()
+    initProvider()
+}
 
-    Object.values(commands).forEach(command => {
-        context.subscriptions.push(command);
-    });
+function initProvider() {
+    return providers.push(
+        vscode.languages.registerDocumentLinkProvider('json', new LinkProvider())
+    )
+}
+
+function clearAll() {
+    providers.map((e: any) => e.dispose())
+    providers = []
+}
+
+export function deactivate() {
+    clearAll()
 }
