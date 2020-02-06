@@ -4,7 +4,7 @@
     "description": "Go to npm/composer package folder quickly",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-goto-package",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.41.0"
     },

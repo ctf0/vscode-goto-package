@@ -1,11 +1,9 @@
 import * as vscode from 'vscode'
 import * as utils from './utils'
 import * as constants from './constants'
-const debounce = require('lodash.debounce')
 
 export default class LinkProvider {
-    provideDocumentLinks = debounce(function (document: any) {
-
+    provideDocumentLinks(document: any) {
         let workspaceFolder = vscode.workspace.getWorkspaceFolder(document.uri)?.uri.fsPath
         let links: any = []
 
@@ -64,5 +62,5 @@ export default class LinkProvider {
         if (links) {
             return links.filter((e: any) => e)
         }
-    }, 250)
+    }
 }
