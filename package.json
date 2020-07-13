@@ -4,7 +4,7 @@
     "description": "Go to npm/composer package folder quickly",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-goto-package",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "engines": {
         "vscode": "^1.41.0"
     },
@@ -20,12 +20,59 @@
         "onLanguage:json"
     ],
     "main": "./out/extension.js",
-    "contributes": {},
+    "contributes": {
+        "commands": [
+            {
+                "command": "gotoPackage.removePackage",
+                "title": "remove package"
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "gotoPackage.removePackage",
+                    "when": "false"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Goto Package",
+            "properties": {
+                "goto_package.pMList": {
+                    "type": "array",
+                    "default": [
+                        {
+                            "url": "https://www.npmjs.com/package/",
+                            "cmnd": "npm uninstall ",
+                            "file": "package.json",
+                            "file_to_open": "package.json",
+                            "folder": "node_modules",
+                            "regex": "(dev)?[dD]ependencies\": {",
+                            "pkg_name_regex": "\"(\\S*)\": ",
+                            "showRemoveLink": true
+                        },
+                        {
+                            "url": "https://www.packagist.org/packages/",
+                            "cmnd": "composer remove ",
+                            "file": "composer.json",
+                            "file_to_open": "readme.md",
+                            "folder": "vendor",
+                            "regex": "require(-dev)?\": {",
+                            "pkg_name_regex": "\"(\\S*)\": ",
+                            "showRemoveLink": true
+                        }
+                    ],
+                    "description": "package managers list"
+                }
+            }
+        }
+    },
     "scripts": {
-        "vscode:prepublish": "yarn run compile",
+        "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "pretest": "yarn run compile",
+        "pretest": "npm run compile",
         "test": "node ./out/test/runTest.js"
     },
     "devDependencies": {

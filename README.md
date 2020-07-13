@@ -12,6 +12,7 @@ based on https://github.com/liajoy/vscode-goto-package + changes
 - popup have both
     - package path
     - package url
+    - remove/uninstall package
 
 ### Helpers
 
