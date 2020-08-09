@@ -4,7 +4,7 @@
     "description": "Go to npm/composer package folder quickly",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-goto-package",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "engines": {
         "vscode": "^1.41.0"
     },
@@ -44,19 +44,19 @@
                     "default": [
                         {
                             "url": "https://www.npmjs.com/package/",
-                            "cmnd": "npm uninstall ",
+                            "cmnd": "npm uninstall",
                             "file": "package.json",
                             "file_to_open": "package.json",
                             "folder": "node_modules",
-                            "regex": "(dev)?[dD]ependencies\": {",
+                            "regex": "(d|devD)ependencies\": {",
                             "pkg_name_regex": "\"(\\S*)\": ",
                             "showRemoveLink": true
                         },
                         {
                             "url": "https://www.packagist.org/packages/",
-                            "cmnd": "composer remove ",
+                            "cmnd": "composer remove",
                             "file": "composer.json",
-                            "file_to_open": "readme.md",
+                            "file_to_open": "composer.json",
                             "folder": "vendor",
                             "regex": "require(-dev)?\": {",
                             "pkg_name_regex": "\"(\\S*)\": ",

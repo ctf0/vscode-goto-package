@@ -48,7 +48,7 @@ export function getExternalUrl(range: any, url: any) {
 }
 
 export function getCmndLink(range: any, pkg: any, cmnd: any) {
-    let args = [{cmnd: `${cmnd}${pkg}`, pkg: pkg}]
+    let args = [{cmnd: `${cmnd} ${pkg}`, pkg: pkg}]
     let link = new vscode.DocumentLink(range, vscode.Uri.parse(`command:${CMND_NAME}?${encodeURIComponent(JSON.stringify(args))}`))
     link.tooltip = `remove "${pkg}"`
 
