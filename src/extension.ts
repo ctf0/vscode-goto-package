@@ -3,6 +3,7 @@ import LinkProvider from './linkProvider'
 import * as utils   from './utils'
 
 const debounce = require('lodash.debounce')
+
 let providers: any = []
 
 export function activate(context: any) {
@@ -10,7 +11,7 @@ export function activate(context: any) {
 
     // config
     vscode.workspace.onDidChangeConfiguration(async (e) => {
-        if (e.affectsConfiguration('gotoPackage')) {
+        if (e.affectsConfiguration(utils.PACKAGE_NAME)) {
             utils.readConfig()
         }
     })
@@ -19,7 +20,7 @@ export function activate(context: any) {
     initProvider()
 
     context.subscriptions.push(
-        vscode.commands.registerCommand('gotoPackage.removePackage', ({cmnd, pkg}) => {
+        vscode.commands.registerCommand(`${utils.PACKAGE_NAME}.removePackage`, ({cmnd, pkg}) => {
             let terminal: vscode.Terminal = utils.getTerminalWindow()
             terminal.show()
             // terminal.sendText(`echo ${cmnd}`)

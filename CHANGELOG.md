@@ -15,3 +15,7 @@
 - terminal window will be reused instead of creating a new window for each removal
 - remove both `showRemovePackageLink & openReadMeInstead` option and merge them under the pms details
 - cleaner api
+
+## 0.0.6
+
+- fix package settings name

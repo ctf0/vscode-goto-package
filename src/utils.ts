@@ -1,7 +1,8 @@
 import * as vscode from 'vscode'
 
-const CMND_NAME = 'gotoPackage.removePackage'
-const TERMNL_WINDOW: string = 'Goto Package: Remove'
+export const PACKAGE_NAME = 'gotoPackage'
+const CMND_NAME = `${PACKAGE_NAME}.removePackage`
+const TERMNL_WINDOW = 'Goto Package: Remove'
 
 export function getPackageLines(document: any, regex: any) {
     let isLineInDependencyScope = false
@@ -88,7 +89,7 @@ export function getTerminalWindow() {
 export let supportList: any = []
 
 export function readConfig() {
-    let config = vscode.workspace.getConfiguration('goto_package')
+    let config = vscode.workspace.getConfiguration(PACKAGE_NAME)
 
     supportList = config.pMList
 }
