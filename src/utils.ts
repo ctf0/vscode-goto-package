@@ -91,5 +91,5 @@ export let supportList: any = []
 export function readConfig() {
     let config = vscode.workspace.getConfiguration(PACKAGE_NAME)
 
-    supportList = config.pMList
+    supportList = config.packageManagersList
 }

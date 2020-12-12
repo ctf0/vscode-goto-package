@@ -19,3 +19,7 @@
 ## 0.0.6
 
 - fix package settings name
+
+## 0.0.7
+
+- typo

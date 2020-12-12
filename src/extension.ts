@@ -20,7 +20,7 @@ export function activate(context: any) {
     initProvider()
 
     context.subscriptions.push(
-        vscode.commands.registerCommand(`${utils.PACKAGE_NAME}.removePackage`, ({cmnd, pkg}) => {
+        vscode.commands.registerCommand(`${utils.CMND_NAME}`, ({cmnd, pkg}) => {
             let terminal: vscode.Terminal = utils.getTerminalWindow()
             terminal.show()
             // terminal.sendText(`echo ${cmnd}`)
