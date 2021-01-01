@@ -4,9 +4,9 @@
     "description": "Go to npm/composer package folder quickly",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-goto-package",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "engines": {
-        "vscode": "^1.51.0"
+        "vscode": "^1.52.0"
     },
     "categories": [
         "Other"
@@ -43,17 +43,17 @@
                     "type": "array",
                     "default": [
                         {
-                            "url": "https://www.npmjs.com/package/",
+                            "url": "https://npmjs.com/package/",
                             "cmnd": "npm uninstall",
                             "file": "package.json",
                             "file_to_open": "package.json",
                             "folder": "node_modules",
-                            "regex": "(d|devD)ependencies\": {",
+                            "regex": "(d|devD|peerD)ependencies\": {",
                             "pkg_name_regex": "\"(\\S*)\": ",
                             "showRemoveLink": true
                         },
                         {
-                            "url": "https://www.packagist.org/packages/",
+                            "url": "https://packagist.org/packages/",
                             "cmnd": "composer remove",
                             "file": "composer.json",
                             "file_to_open": "composer.json",
@@ -77,12 +77,12 @@
     },
     "devDependencies": {
         "@types/glob": "^7.1.3",
-        "@types/mocha": "^8.0.4",
-        "@types/node": "^14.14.10",
-        "@types/vscode": "^1.51.0",
+        "@types/mocha": "^8.2.0",
+        "@types/node": "^14.14.16",
+        "@types/vscode": "^1.52.0",
         "mocha": "^8.2.1",
         "tslint": "^5.20.1",
-        "typescript": "^4.1.2",
+        "typescript": "^4.1.3",
         "vscode-test": "^1.4.1"
     },
     "dependencies": {

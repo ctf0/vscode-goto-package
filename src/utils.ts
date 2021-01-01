@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 
 export const PACKAGE_NAME = 'gotoPackage'
-const CMND_NAME = `${PACKAGE_NAME}.removePackage`
+export const CMND_NAME = `${PACKAGE_NAME}.removePackage`
 const TERMNL_WINDOW = 'Goto Package: Remove'
 
 export function getPackageLines(document: any, regex: any) {
@@ -35,22 +35,22 @@ export function isSupported(document: any, type: any) {
 }
 
 export function getInternalLink(range: any, path: any, pkgPath: any) {
-    let link = new vscode.DocumentLink(range, path)
+    let link     = new vscode.DocumentLink(range, path)
     link.tooltip = pkgPath
 
     return link
 }
 
 export function getExternalUrl(range: any, url: any) {
-    let link = new vscode.DocumentLink(range, vscode.Uri.parse(`${url}`))
+    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(`${url}`))
     link.tooltip = url
 
     return link
 }
 
 export function getCmndLink(range: any, pkg: any, cmnd: any) {
-    let args = [{cmnd: `${cmnd} ${pkg}`, pkg: pkg}]
-    let link = new vscode.DocumentLink(range, vscode.Uri.parse(`command:${CMND_NAME}?${encodeURIComponent(JSON.stringify(args))}`))
+    let args     = [{cmnd: `${cmnd} ${pkg}`, pkg: pkg}]
+    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(`command:${CMND_NAME}?${encodeURIComponent(JSON.stringify(args))}`))
     link.tooltip = `remove "${pkg}"`
 
     return link
