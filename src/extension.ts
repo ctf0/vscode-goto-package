@@ -29,7 +29,7 @@ export function activate(context: any) {
     )
 }
 
-const initProvider = debounce(function () {
+const initProvider = debounce(function() {
     return providers.push(
         vscode.languages.registerDocumentLinkProvider('json', new LinkProvider())
     )

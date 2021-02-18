@@ -23,3 +23,7 @@
 ## 0.0.7
 
 - typo
+
+## 0.1.0
+
+- fix a long running issue of https://github.com/microsoft/vscode/issues/113328

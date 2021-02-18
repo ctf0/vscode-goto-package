@@ -42,15 +42,16 @@ export function getInternalLink(range: any, path: any, pkgPath: any) {
 }
 
 export function getExternalUrl(range: any, url: any) {
-    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(`${url}`))
+    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(encodeURI(url)))
     link.tooltip = url
 
     return link
 }
 
 export function getCmndLink(range: any, pkg: any, cmnd: any) {
-    let args     = [{cmnd: `${cmnd} ${pkg}`, pkg: pkg}]
-    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(`command:${CMND_NAME}?${encodeURIComponent(JSON.stringify(args))}`))
+    let args = encodeURIComponent(JSON.stringify([{cmnd: encodeURI(`${cmnd} ${pkg}`), pkg: pkg}]))
+
+    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(`command:${CMND_NAME}?${args}`))
     link.tooltip = `remove "${pkg}"`
 
     return link
