@@ -34,16 +34,16 @@ export function isSupported(document: any, type: any) {
     return document.fileName.endsWith(type)
 }
 
-export function getInternalLink(range: any, path: any, pkgPath: any) {
-    let link     = new vscode.DocumentLink(range, path)
-    link.tooltip = pkgPath
+export function getExternalUrl(range: any, url: any, registry: any) {
+    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(encodeURI(url)))
+    link.tooltip = registry
 
     return link
 }
 
-export function getExternalUrl(range: any, url: any) {
-    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(encodeURI(url)))
-    link.tooltip = url
+export function getInternalLink(range: any, path: any, pkgPath: any) {
+    let link     = new vscode.DocumentLink(range, path)
+    link.tooltip = pkgPath
 
     return link
 }
