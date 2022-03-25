@@ -1,9 +1,8 @@
-import * as vscode   from 'vscode'
-import * as utils    from './utils'
-import LinkProvider  from './linkProvider'
+import * as vscode from 'vscode'
+import * as utils from './utils'
+import LinkProvider from './linkProvider'
 import HoverProvider from './hoverProvider'
-
-const debounce = require('lodash.debounce')
+import { debounce } from 'lodash'
 
 let providers: any = []
 
