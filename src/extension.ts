@@ -1,6 +1,7 @@
-import * as vscode  from 'vscode'
-import LinkProvider from './linkProvider'
-import * as utils   from './utils'
+import * as vscode   from 'vscode'
+import * as utils    from './utils'
+import LinkProvider  from './linkProvider'
+import HoverProvider from './hoverProvider'
 
 const debounce = require('lodash.debounce')
 
@@ -31,6 +32,7 @@ export function activate(context: any) {
 
 const initProvider = debounce(function() {
     return providers.push(
+        vscode.languages.registerHoverProvider('json', new HoverProvider()),
         vscode.languages.registerDocumentLinkProvider('json', new LinkProvider())
     )
 }, 250)

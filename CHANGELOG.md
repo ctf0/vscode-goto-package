@@ -27,3 +27,7 @@
 ## 0.1.0
 
 - fix a long running issue of https://github.com/microsoft/vscode/issues/113328
+
+## 0.1.1
+
+- show pkg info on hover

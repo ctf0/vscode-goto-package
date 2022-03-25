@@ -10,23 +10,23 @@ export default class LinkProvider {
 
     provideDocumentLinks(document: any) {
         let workspaceFolder = vscode.workspace.getWorkspaceFolder(document.uri)?.uri.fsPath
-        let links: any = []
+        let links: any      = []
 
         this.list.map((item:any) => {
-            if (utils.isSupported(document, item.file)) {
+            if (utils.isSupported(document, item.file_to_search)) {
                 for (const line of utils.getPackageLines(document, new RegExp(item.regex))) {
                     let {text, lineNumber} = line
-                    let match = text.match(item.pkg_name_regex)
+                    let match              = text.match(item.pkg_name_regex)
 
                     if (match) {
-                        let pkg = match[1]
+                        let pkg     = match[1]
                         let pkgPath = `${item.folder}/${pkg}`
-                        let path = utils.getPath(workspaceFolder, pkgPath, item.file_to_open)
-                        let range = utils.getRange(text, pkg, lineNumber)
+                        let path    = utils.getPath(workspaceFolder, pkgPath, item.file_to_open)
+                        let range   = utils.getRange(text, pkg, lineNumber)
 
-                        let external = utils.getExternalUrl(range, `${item.url}${pkg}`)
-                        let internal = utils.getInternalLink(range, path, pkgPath)
-                        let remove = utils.getCmndLink(range, pkg, item.cmnd)
+                        let external = utils.getExternalUrl(range, `${item.url}${pkg}`, item.registry)
+                        let internal = utils.getInternalLink(range, path, item.folder)
+                        let remove   = utils.getCmndLink(range, pkg, item.cmnd)
 
                         links.push(external, internal, item.showRemoveLink ? remove : null)
                     }
