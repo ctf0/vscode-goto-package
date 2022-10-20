@@ -31,3 +31,7 @@
 ## 0.1.1
 
 - show pkg info on hover
+
+## 0.2.0
+
+- fix not showing installed version
