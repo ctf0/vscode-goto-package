@@ -3,6 +3,7 @@ import * as vscode from 'vscode'
 export const PACKAGE_NAME = 'gotoPackage'
 export const CMND_NAME = `${PACKAGE_NAME}.removePackage`
 const TERMNL_WINDOW = 'Goto Package: Remove'
+const scheme = `command:${CMND_NAME}`
 
 export function getPackageLines(document: any, regex: any) {
     let isLineInDependencyScope = false
@@ -51,7 +52,7 @@ export function getInternalLink(range: any, path: any, pkgPath: any) {
 export function getCmndLink(range: any, pkg: any, cmnd: any) {
     let args = encodeURIComponent(JSON.stringify([{cmnd: encodeURI(`${cmnd} ${pkg}`), pkg: pkg}]))
 
-    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(`command:${CMND_NAME}?${args}`))
+    let link     = new vscode.DocumentLink(range, vscode.Uri.parse(`${scheme}?${args}`))
     link.tooltip = `remove "${pkg}"`
 
     return link

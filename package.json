@@ -4,7 +4,7 @@
     "description": "Go to npm/composer package folder quickly",
     "publisher": "ctf0",
     "repository": "https://github.com/ctf0/vscode-goto-package",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "engines": {
         "vscode": "^1.68.0"
     },
@@ -21,20 +21,6 @@
     ],
     "main": "./out/main",
     "contributes": {
-        "commands": [
-            {
-                "command": "gotoPackage.removePackage",
-                "title": "remove package"
-            }
-        ],
-        "menus": {
-            "commandPalette": [
-                {
-                    "command": "gotoPackage.removePackage",
-                    "when": "false"
-                }
-            ]
-        },
         "configuration": {
             "type": "object",
             "title": "Goto Package",
