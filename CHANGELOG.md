@@ -35,3 +35,7 @@
 ## 0.2.0
 
 - fix not showing installed version
+
+## 0.2.2
+
+- add support to show changelog as well
