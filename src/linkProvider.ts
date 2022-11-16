@@ -31,14 +31,14 @@ export default class LinkProvider {
 
                             try {
                                 await vscode.workspace.fs.stat(changelog_path)
-                                changelog = utils.getInternalLink(range, changelog_path, changelog_name)
+                                changelog = utils.getInternalLink(range, changelog_path, `${item.folder} (${changelog_name})`)
                             } catch (error) {
                                 changelog = null
                             }
 
                             links.push(
                                 utils.getExternalUrl(range, `${item.url}${pkg}`, item.registry),
-                                utils.getInternalLink(range, path, item.folder),
+                                utils.getInternalLink(range, path, `${item.folder} (${item.file_to_open})`),
                                 changelog,
                                 item.showRemoveLink ? utils.getCmndLink(range, pkg, item.cmnd) : null
                             )
