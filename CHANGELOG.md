@@ -39,3 +39,10 @@
 ## 0.2.2
 
 - add support to show changelog as well
+
+## 0.2.5
+
+- remove hover provider support, for composer u can instead use https://marketplace.visualstudio.com/items?itemName=DEVSENSE.composer-php-vscode
+- u can also now remove
+    - package manager link, if `registry` is an empty string,
+    - installation folder link if `folder` if an empty string

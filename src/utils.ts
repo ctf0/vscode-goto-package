@@ -58,8 +58,8 @@ export function getCmndLink(range: any, pkg: any, cmnd: any) {
     return link
 }
 
-export function getPath(workspaceFolder: any, pkgPath: any, file_to_open: any) {
-    return vscode.Uri.file(`${workspaceFolder}/${pkgPath}/${file_to_open}`)
+export function getPath(workspaceFolder: any, pkgPath: any, file: any) {
+    return vscode.Uri.file(`${workspaceFolder}/${pkgPath}/${file}`)
 }
 
 export function getRange(text: any, pkg: any, lineNumber: any) {

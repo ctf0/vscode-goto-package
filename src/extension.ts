@@ -31,7 +31,6 @@ export function activate(context: any) {
 
 const initProvider = debounce(function() {
     return providers.push(
-        vscode.languages.registerHoverProvider('json', new HoverProvider()),
         vscode.languages.registerDocumentLinkProvider('json', new LinkProvider())
     )
 }, 250)

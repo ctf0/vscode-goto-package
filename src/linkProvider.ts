@@ -15,7 +15,9 @@ export default class LinkProvider {
 
         await Promise.all(
             this.list.map(async (item:any) => {
-                if (utils.isSupported(document, item.file_to_search)) {
+                let search_file = item.file_to_search
+
+                if (utils.isSupported(document, search_file)) {
                     for (const line of utils.getPackageLines(document, new RegExp(item.regex))) {
                         let {text, lineNumber} = line
                         let match              = text.match(item.pkg_name_regex)
@@ -23,7 +25,7 @@ export default class LinkProvider {
                         if (match) {
                             let pkg     = match[1]
                             let pkgPath = `${item.folder}/${pkg}`
-                            let path    = utils.getPath(workspaceFolder, pkgPath, item.file_to_open)
+                            let path    = utils.getPath(workspaceFolder, pkgPath, search_file)
                             let range   = utils.getRange(text, pkg, lineNumber)
 
                             let changelog_path = utils.getPath(workspaceFolder, pkgPath, changelog_name)
@@ -37,8 +39,8 @@ export default class LinkProvider {
                             }
 
                             links.push(
-                                utils.getExternalUrl(range, `${item.url}${pkg}`, item.registry),
-                                utils.getInternalLink(range, path, `${item.folder} (${item.file_to_open})`),
+                                (item.registry && item.url) ? utils.getExternalUrl(range, `${item.url}${pkg}`, item.registry) : null,
+                                item.folder ? utils.getInternalLink(range, path, `${item.folder} (${search_file})`) : null,
                                 changelog,
                                 item.showRemoveLink ? utils.getCmndLink(range, pkg, item.cmnd) : null
                             )
