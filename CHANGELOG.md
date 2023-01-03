@@ -46,3 +46,9 @@
 - u can also now remove
     - package manager link, if `registry` is an empty string,
     - installation folder link if `folder` if an empty string
+
+## 0.2.6
+
+- cleanup
+- support nested vendor folders, now we search for folders next to the PM file instead of global only
+- also dont show a link for packages if its not installed

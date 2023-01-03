@@ -1,8 +1,7 @@
+import debounce from 'lodash.debounce'
 import * as vscode from 'vscode'
-import * as utils from './utils'
 import LinkProvider from './linkProvider'
-import HoverProvider from './hoverProvider'
-import { debounce } from 'lodash'
+import * as utils from './utils'
 
 let providers: any = []
 
@@ -20,7 +19,7 @@ export function activate(context: any) {
     initProvider()
 
     context.subscriptions.push(
-        vscode.commands.registerCommand(`${utils.CMND_NAME}`, ({cmnd, pkg}) => {
+        vscode.commands.registerCommand(`${utils.CMND_NAME}`, ({ cmnd, pkg }) => {
             let terminal: vscode.Terminal = utils.getTerminalWindow()
             terminal.show()
             // terminal.sendText(`echo ${cmnd}`)
@@ -29,7 +28,7 @@ export function activate(context: any) {
     )
 }
 
-const initProvider = debounce(function() {
+const initProvider = debounce(function () {
     return providers.push(
         vscode.languages.registerDocumentLinkProvider('json', new LinkProvider())
     )
