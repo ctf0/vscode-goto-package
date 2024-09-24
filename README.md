@@ -13,9 +13,9 @@ based on https://github.com/liajoy/vscode-goto-package + changes
     - package path
     - package url
     - package changelog (if exist)
+    - package readme (if exist)
     - remove/uninstall package
 
 ### Helpers
 
-- https://marketplace.visualstudio.com/items?itemName=eamodio.toggle-excluded-files
 - https://marketplace.visualstudio.com/items?itemName=ctf0.package-managers-context-menu

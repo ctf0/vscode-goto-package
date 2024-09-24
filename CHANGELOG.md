@@ -52,3 +52,7 @@
 - cleanup
 - support nested vendor folders, now we search for folders next to the PM file instead of global only
 - also dont show a link for packages if its not installed
+
+## 0.2.7
+
+- add support to show readme link in the popup

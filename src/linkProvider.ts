@@ -15,6 +15,7 @@ export default class LinkProvider {
 
         let links: any = []
         let changelog_name = 'CHANGELOG.md'
+        let readme_name = 'README.md'
 
         await Promise.all(
             this.list.map(async (item: any) => {
@@ -32,6 +33,7 @@ export default class LinkProvider {
 
                             let search_file_link: any = null
                             let changelog_link: any = null
+                            let readme_link: any = null
                             let remove_link: any = null
 
                             try {
@@ -53,10 +55,20 @@ export default class LinkProvider {
                                 // console.error(error);
                             }
 
+                            try {
+                                let readme_path = utils.getPath(workspaceFolder, pkgPath, readme_name)
+                                await vscode.workspace.fs.stat(readme_path)
+
+                                readme_link = utils.getInternalLink(range, readme_path, `${item.folder} (${readme_name})`)
+                            } catch (error) {
+                                // console.error(error);
+                            }
+
                             links.push(
                                 (item.registry && item.url) ? utils.getExternalUrl(range, `${item.url}${pkg}`, item.registry) : null,
                                 search_file_link,
                                 changelog_link,
+                                readme_link,
                                 remove_link
                             )
                         }
